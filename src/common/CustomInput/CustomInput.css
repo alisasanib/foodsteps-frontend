@@ -1,0 +1,55 @@
+.input {
+  border-radius: 8px;
+  border: 2px solid #939393;
+  color: black;
+  height: 52px;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+}
+
+.ant-input-affix-wrapper:hover {
+  border: 2px solid #939393;
+  box-shadow: 0px 2px 8px 0px #0000003d;
+}
+
+.input .ant-input-prefix,
+.input .ant-input-suffix {
+  margin: 0;
+}
+
+.input.input-focused {
+  border-color: black;
+}
+
+.search .input:hover,
+.input:focus,
+.input:focus-within {
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.24);
+}
+
+.ant-input-affix-wrapper:focus-within {
+  border: 2px solid #000000;
+}
+
+.ant-input-affix-wrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.ant-input-affix-wrapper:focus-within .search-icon {
+  color: black;
+}
+.search-icon {
+  color: #939393;
+}
+
+.search-icon-focused {
+  color: black;
+}
+
+.close-icon {
+  cursor: pointer;
+}
