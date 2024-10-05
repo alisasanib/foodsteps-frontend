@@ -1,0 +1,25 @@
+.post-card {
+  background-color: rgb(254, 250, 219);
+  border: 2px solid black;
+  width: 500px;
+}
+
+.post-card,
+.post-card .ant-card-head {
+  color: black;
+  border-color: black !important;
+}
+
+.collapsible-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.1s ease-out;
+}
+
+.collapsible-content.expanded {
+  max-height: 200px;
+}
+
+.collapsible-content.collapsed {
+  max-height: 0;
+}
