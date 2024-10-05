@@ -1,22 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
 import { Space, Spin } from "antd";
-import { useAppSelector } from "../../store/hooks";
-import { userIdSelector } from "../../store/slices/userSlice";
-import PostCard from "../../common/PostCard";
-import { Post } from "../../types/Post.dto";
-import { useFetch } from "../../hooks/useFetch";
-import CustomInput from "common/CustomInput";
+import { PostCard, CustomInput } from "common";
+import { useAppSelector } from "store/hooks";
+import { userIdSelector } from "store/slices/userSlice";
+import { useFetch } from "hooks/useFetch";
+import { Post } from "types/Post.dto";
 import "./Posts.css";
 
 const Posts: React.FC = () => {
   const [filteredPosts, setFilteredPosts] = useState<Post[] | null>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const userId = useAppSelector(userIdSelector);
-  const {
-    data: posts,
-    isLoading,
-    error,
-  } = useFetch<Post[]>(`posts?userId=${userId}`);
+  const { data: posts, isLoading, error } = useFetch<Post[]>(`posts?userId=${userId}`);
 
   useEffect(() => {
     setFilteredPosts(posts);

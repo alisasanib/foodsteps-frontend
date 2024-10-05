@@ -1,6 +1,6 @@
 import React from "react";
 import { Select, Space } from "antd";
-import { SelectOption } from "../../types/SelectOption.dto";
+import { SelectOption } from "types/SelectOption.dto";
 
 interface SelectInputProps {
   options: SelectOption[];

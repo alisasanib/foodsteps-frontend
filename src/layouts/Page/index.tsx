@@ -1,15 +1,14 @@
+import { useEffect, useState } from "react";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { UnorderedListOutlined, UserOutlined } from "@ant-design/icons";
 import { Layout, Spin } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
-import AvatarButton from "../../AvatarButton";
-import { Link, Outlet, useLocation } from "react-router-dom";
-import Select from "../../common/SelectInput";
-import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { setUser, userIdSelector } from "../../store/slices/userSlice";
-import { useFetch } from "../../hooks/useFetch";
-import { User } from "../../types/User.dto";
-import { SelectOption } from "../../types/SelectOption.dto";
+import { AvatarButton, SelectInput } from "common";
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { setUser, userIdSelector } from "store/slices/userSlice";
+import { useFetch } from "hooks/useFetch";
+import { User } from "types/User.dto";
+import { SelectOption } from "types/SelectOption.dto";
 import "./Page.css";
 
 const pathToTitle: Record<string, string> = {
@@ -56,7 +55,7 @@ const Page: React.FC = () => {
         </div>
         <h1>{title}</h1>
         <div className='page-header-item right'>
-          <Select
+          <SelectInput
             options={users}
             value={selectedUser ?? users?.[0].label}
             onChange={handleUserChange}

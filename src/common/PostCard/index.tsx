@@ -1,5 +1,5 @@
 import { Collapse } from "antd";
-import { Post } from "../../types/Post.dto";
+import { Post } from "types/Post.dto";
 import "./PostCard.css";
 
 

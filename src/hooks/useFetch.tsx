@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchData } from "../utils/fetchData";
+import { fetchData } from "utils/fetchData";
 import { API_URL } from "config";
 
 export function useFetch<T>(url: string) {

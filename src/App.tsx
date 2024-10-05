@@ -1,8 +1,11 @@
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ConfigProvider } from "antd";
-import { Posts, UserDetails } from "./pages";
-import Page from "./layouts/Page";
 import "./App.css";
+
+const Posts = lazy(() => import("./pages/Posts"));
+const UserDetails = lazy(() => import("./pages/UserDetails"));
+const Page = lazy(() => import("./layouts/Page"));
 
 function App() {
   return (
@@ -14,28 +17,30 @@ function App() {
         },
       }}>
       <BrowserRouter>
-        <Routes>
-          <Route
-            path='/'
-            element={<Page />}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
             <Route
-              index
-              element={<Posts />}
-            />{" "}
-            <Route
-              path='posts'
-              element={<Posts />}
-            />
-            <Route
-              path='active-user'
-              element={<UserDetails />}
-            />
-            <Route
-              path='*'
-              element={<Posts />}
-            />
-          </Route>
-        </Routes>
+              path='/'
+              element={<Page />}>
+              <Route
+                index
+                element={<Posts />}
+              />
+              <Route
+                path='posts'
+                element={<Posts />}
+              />
+              <Route
+                path='active-user'
+                element={<UserDetails />}
+              />
+              <Route
+                path='*'
+                element={<Posts />}
+              />
+            </Route>
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </ConfigProvider>
   );
