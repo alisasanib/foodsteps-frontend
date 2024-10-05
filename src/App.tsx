@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ConfigProvider } from "antd";
 import "./App.css";
+import ErrorBoundary from "ErrorBoundary";
 
 const Posts = lazy(() => import("./pages/Posts"));
 const UserDetails = lazy(() => import("./pages/UserDetails"));
@@ -17,30 +18,32 @@ function App() {
         },
       }}>
       <BrowserRouter>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route
-              path='/'
-              element={<Page />}>
+        <ErrorBoundary>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
               <Route
-                index
-                element={<Posts />}
-              />
-              <Route
-                path='posts'
-                element={<Posts />}
-              />
-              <Route
-                path='active-user'
-                element={<UserDetails />}
-              />
-              <Route
-                path='*'
-                element={<Posts />}
-              />
-            </Route>
-          </Routes>
-        </Suspense>
+                path='/'
+                element={<Page />}>
+                <Route
+                  index
+                  element={<Posts />}
+                />
+                <Route
+                  path='posts'
+                  element={<Posts />}
+                />
+                <Route
+                  path='active-user'
+                  element={<UserDetails />}
+                />
+                <Route
+                  path='*'
+                  element={<Posts />}
+                />
+              </Route>
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </BrowserRouter>
     </ConfigProvider>
   );
