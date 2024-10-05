@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Collapse } from "antd";
 import { Post } from "types/Post.dto";
 import "./PostCard.css";
@@ -7,7 +8,7 @@ interface PostCardProps {
   post: Post;
 }
 
-const PostCard: React.FC<PostCardProps> = ({ post }) => {
+const PostCard: React.FC<PostCardProps> = memo(({ post }) => {
   return (
     <div className='custom-post-card'>
       <Collapse
@@ -22,6 +23,6 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
       />
     </div>
   );
-};
+});
 
 export default PostCard;

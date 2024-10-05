@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { UnorderedListOutlined, UserOutlined } from "@ant-design/icons";
 import { Layout, Spin } from "antd";
@@ -32,9 +32,12 @@ const Page: React.FC = () => {
     }
   }, [data, dispatch]);
 
-  const handleUserChange = (value: string) => {
-    dispatch(setUser(value));
-  };
+  const handleUserChange = useCallback(
+    (value: string) => {
+      dispatch(setUser(value));
+    },
+    [dispatch]
+  );
 
   const title = pathToTitle[location.pathname] || "Default Title";
 
